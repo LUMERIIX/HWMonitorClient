@@ -1,0 +1,2 @@
+# HWMonitorClient
+GUI with JavaFx 
