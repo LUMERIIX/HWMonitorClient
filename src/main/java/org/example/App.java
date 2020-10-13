@@ -38,55 +38,18 @@ public class App extends Application {
 
         var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
 
-        Gauge ramGauge = GaugeBuilder.create()
-                .skinType(Gauge.SkinType.SIMPLE_SECTION)
-                .prefSize(TILE_WIDTH, TILE_HEIGHT)
-                .animated(true)
-                .title("RAM Usage")
-                .unit("\u00B0%")
-                .valueColor(Tile.FOREGROUND)
-                .titleColor(Tile.FOREGROUND)
-                .unitColor(Tile.FOREGROUND)
-                .barColor(Tile.BLUE)
-                .needleColor(Tile.FOREGROUND)
-                .barColor(Tile.BLUE)
-                .barBackgroundColor(Tile.BACKGROUND.darker())
-                .tickLabelColor(Tile.FOREGROUND)
-                .majorTickMarkColor(Tile.FOREGROUND)
-                .minorTickMarkColor(Tile.FOREGROUND)
-                .mediumTickMarkColor(Tile.FOREGROUND)
-                .build();
-
-        ramGauge.setBarColor(Tile.FOREGROUND);
-        ramGauge.setSections(new Section(66, 100, Tile.BLUE));
-        Tile MainRamUsage  = TileBuilder.create()
-                .prefSize(TILE_WIDTH, TILE_HEIGHT)
-                .skinType(SkinType.CUSTOM)
-                .title("Medusa SimpleSection")
-                .text("Temperature")
-                .graphic(ramGauge)
-                .build();
-
 
         var gridPane = new GridPane();
 
-        EventHandler<MouseEvent> gridEventClickHandler = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                Node source = (Node)e.getSource();
-                System.out.println("Clicked");
-                var column = GridPane.getColumnIndex(source);
-                var row = GridPane.getRowIndex(source);
-                System.out.printf("Row: %d",row);
-                System.out.printf("Column: %d",column);
-            }
-        };
-
         CPU cpu = new CPU(TILE_WIDTH,TILE_HEIGHT);
+        RAM ram = new RAM(TILE_WIDTH,TILE_HEIGHT);
+        GPU gpu = new GPU(TILE_WIDTH,TILE_HEIGHT);
+        Storage storage = new Storage(TILE_WIDTH,TILE_HEIGHT);
 
-        MainRamUsage.addEventHandler(MouseEvent.MOUSE_CLICKED,gridEventClickHandler);
-        gridPane.add(cpu.MainCpuTemp,1,0);
-        gridPane.add(MainRamUsage,1,1);
+        gridPane.add(cpu.MainCpuTemp,0,0);
+        gridPane.add(ram.MainRamUsage,1,0);
+        gridPane.add(gpu.MainGpuTemp,2,0);
+        gridPane.add(storage.MainStorageUsage,2,1);
 
         gridPane.setHgap(20);
         gridPane.setVgap(10);

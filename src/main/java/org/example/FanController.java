@@ -9,20 +9,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Stop;
 
-public class GPU
+public class FanController
 {
-    public Tile MainGpuTemp;
+    public Tile MainFanTile;
 
-    public GPU(double TileWidth, double TileHeight)
+    public FanController(double TileWidth, double TileHeight)
     {
         createMainTile(TileWidth,TileHeight);
     }
 
-    private EventHandler<MouseEvent> MainViewGpuHandler = new EventHandler<MouseEvent>() {
+    private EventHandler<MouseEvent> MainViewFanControllerHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent e) {
             Node source = (Node)e.getSource();
-            System.out.println("GPU Main handle");
+            System.out.println("Fan Main handle");
             var column = GridPane.getColumnIndex(source);
             var row = GridPane.getRowIndex(source);
             System.out.printf("Row: %d",row);
@@ -32,10 +32,10 @@ public class GPU
 
     private void createMainTile(double TileWidth, double TileHeight)
     {
-        MainGpuTemp = TileBuilder.create()
+        MainFanTile = TileBuilder.create()
                 .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
                 .prefSize(TileWidth, TileHeight)
-                .title("GPU Temp")
+                .title("Fan")
                 .unit("\u00B0C")
                 .animated(true)
                 .textVisible(false)
@@ -57,6 +57,6 @@ public class GPU
                         new Stop(1.0, Tile.LIGHT_RED))
                 .build();
 
-        MainGpuTemp.addEventHandler(MouseEvent.MOUSE_CLICKED,MainViewGpuHandler);
+        MainFanTile.addEventHandler(MouseEvent.MOUSE_CLICKED,MainViewFanControllerHandler);
     }
 }
