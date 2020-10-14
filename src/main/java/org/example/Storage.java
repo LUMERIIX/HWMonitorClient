@@ -7,6 +7,7 @@ import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.TileBuilder;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -25,10 +26,12 @@ public class Storage
     private EventHandler<MouseEvent> MainViewStorageHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent e) {
+            /**Node target = (Node);
             Node source = (Node)e.getSource();
+            Parent parent = source.getParent();**/
             System.out.println("Storage Main handle");
-            var column = GridPane.getColumnIndex(source);
-            var row = GridPane.getRowIndex(source);
+            var column = GridPane.getColumnIndex(MainStorageUsage);
+            var row = GridPane.getRowIndex(MainStorageUsage);
             System.out.printf("Row: %d",row);
             System.out.printf("Column: %d",column);
         }
@@ -49,13 +52,15 @@ public class Storage
                         new Stop(0.75, Color.ORANGE),
                         new Stop(1.0, Color.RED))
                 .build();
+
+        storage.addEventHandler(MouseEvent.MOUSE_CLICKED,MainViewStorageHandler);
+
         return storage;
     }
 
-    private void createMainTile(double TileWidth, double TileHeight)
-    {
-        Gauge storage = createStorageGauge("Total Disk Usage",TileWidth,TileHeight);
-        MainStorageUsage  = TileBuilder.create()
+    private void createMainTile(double TileWidth, double TileHeight) {
+        Gauge storage = createStorageGauge("", TileWidth, TileHeight);
+        MainStorageUsage = TileBuilder.create()
                 .prefSize(TileWidth, TileHeight)
                 .skinType(Tile.SkinType.CUSTOM)
                 .title("Total Disk Usage")

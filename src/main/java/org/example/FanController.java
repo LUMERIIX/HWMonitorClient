@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Stop;
+import javafx.scene.text.TextAlignment;
 
 public class FanController
 {
@@ -32,29 +33,11 @@ public class FanController
 
     private void createMainTile(double TileWidth, double TileHeight)
     {
-        MainFanTile = TileBuilder.create()
-                .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
+        MainFanTile = TileBuilder.create().skinType(Tile.SkinType.CHARACTER)
                 .prefSize(TileWidth, TileHeight)
-                .title("Fan")
-                .unit("\u00B0C")
-                .animated(true)
-                .textVisible(false)
-                .averagingPeriod(25)
-                .autoReferenceValue(true)
-                .barColor(Tile.YELLOW_ORANGE)
-                .barBackgroundColor(Color.rgb(255, 255, 255, 0.1))
-                .sections(new eu.hansolo.tilesfx.Section(0, 33, Tile.LIGHT_GREEN),
-                        new eu.hansolo.tilesfx.Section(33, 67, Tile.YELLOW),
-                        new eu.hansolo.tilesfx.Section(67, 100, Tile.LIGHT_RED))
-                .sectionsVisible(true)
-                .highlightSections(true)
-                .strokeWithGradient(true)
-                .gradientStops(new Stop(0.0, Tile.LIGHT_GREEN),
-                        new Stop(0.33, Tile.LIGHT_GREEN),
-                        new Stop(0.33,Tile.YELLOW),
-                        new Stop(0.67, Tile.YELLOW),
-                        new Stop(0.67, Tile.LIGHT_RED),
-                        new Stop(1.0, Tile.LIGHT_RED))
+                .title("Fans")
+                .titleAlignment(TextAlignment.CENTER)
+                .description("-")
                 .build();
 
         MainFanTile.addEventHandler(MouseEvent.MOUSE_CLICKED,MainViewFanControllerHandler);

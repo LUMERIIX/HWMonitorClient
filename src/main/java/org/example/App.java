@@ -45,11 +45,16 @@ public class App extends Application {
         RAM ram = new RAM(TILE_WIDTH,TILE_HEIGHT);
         GPU gpu = new GPU(TILE_WIDTH,TILE_HEIGHT);
         Storage storage = new Storage(TILE_WIDTH,TILE_HEIGHT);
+        Interfaces interfaces = new Interfaces(TILE_WIDTH,TILE_HEIGHT);
+        FanController fans = new FanController(TILE_WIDTH,TILE_HEIGHT);
+
 
         gridPane.add(cpu.MainCpuTemp,0,0);
         gridPane.add(ram.MainRamUsage,1,0);
         gridPane.add(gpu.MainGpuTemp,2,0);
         gridPane.add(storage.MainStorageUsage,2,1);
+        gridPane.add(interfaces.MainInterfaceTile,0,1);
+        gridPane.add(fans.MainFanTile,1,1);
 
         gridPane.setHgap(20);
         gridPane.setVgap(10);
