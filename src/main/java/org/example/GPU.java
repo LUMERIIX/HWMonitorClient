@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Stop;
+import javafx.scene.text.TextAlignment;
 
 public class GPU
 {
@@ -36,6 +37,7 @@ public class GPU
                 .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
                 .prefSize(TileWidth, TileHeight)
                 .title("GPU Temp")
+                .titleAlignment(TextAlignment.CENTER)
                 .unit("\u00B0C")
                 .animated(true)
                 .textVisible(false)

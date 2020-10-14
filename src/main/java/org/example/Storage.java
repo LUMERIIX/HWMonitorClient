@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Stop;
+import javafx.scene.text.TextAlignment;
+
 import java.lang.String;
 
 public class Storage
@@ -41,7 +43,6 @@ public class Storage
     {
         Gauge storage = GaugeBuilder.create()
                 .skinType(Gauge.SkinType.LEVEL)
-                .title(title)
                 .prefSize(TileWidth,TileHeight)
                 .titleColor(Color.WHITE)
                 .animated(true)
@@ -64,6 +65,7 @@ public class Storage
                 .prefSize(TileWidth, TileHeight)
                 .skinType(Tile.SkinType.CUSTOM)
                 .title("Total Disk Usage")
+                .titleAlignment(TextAlignment.CENTER)
                 .graphic(storage)
                 .build();
     }

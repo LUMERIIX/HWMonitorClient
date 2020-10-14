@@ -5,6 +5,7 @@ import eu.hansolo.medusa.GaugeBuilder;
 import eu.hansolo.medusa.Section;
 import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.TileBuilder;
+import javafx.scene.text.TextAlignment;
 
 
 public class RAM
@@ -22,7 +23,6 @@ public class RAM
                 .skinType(Gauge.SkinType.SIMPLE_SECTION)
                 .prefSize(TileWidth, TileHeight)
                 .animated(true)
-                .title("RAM Usage")
                 .unit("%")
                 .valueColor(Tile.FOREGROUND)
                 .titleColor(Tile.FOREGROUND)
@@ -43,7 +43,7 @@ public class RAM
                 .prefSize(TileWidth, TileHeight)
                 .skinType(Tile.SkinType.CUSTOM)
                 .title("Ram Usage")
-                .text("Usage")
+                .titleAlignment(TextAlignment.CENTER)
                 .graphic(ramGauge)
                 .build();
     }
