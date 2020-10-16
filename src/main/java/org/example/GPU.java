@@ -14,9 +14,9 @@ public class GPU
 {
     public Tile MainGpuTemp;
 
-    public GPU(double TileWidth, double TileHeight)
+    public GPU()
     {
-        createMainTile(TileWidth,TileHeight);
+        createMainTile();
     }
 
     private EventHandler<MouseEvent> MainViewGpuHandler = new EventHandler<MouseEvent>() {
@@ -31,11 +31,11 @@ public class GPU
         }
     };
 
-    private void createMainTile(double TileWidth, double TileHeight)
+    private void createMainTile()
     {
         MainGpuTemp = TileBuilder.create()
                 .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
-                .prefSize(TileWidth, TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .title("GPU Temp")
                 .titleAlignment(TextAlignment.CENTER)
                 .unit("\u00B0C")

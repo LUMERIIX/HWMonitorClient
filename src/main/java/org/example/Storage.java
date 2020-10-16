@@ -20,9 +20,9 @@ public class Storage
 {
     public Tile MainStorageUsage;
 
-    public Storage(double TileWidth, double TileHeight)
+    public Storage()
     {
-        createMainTile(TileWidth,TileHeight);
+        createMainTile();
     }
 
     private EventHandler<MouseEvent> MainViewStorageHandler = new EventHandler<MouseEvent>() {
@@ -39,11 +39,11 @@ public class Storage
         }
     };
 
-    private Gauge createStorageGauge(String title, double TileWidth, double TileHeight)
+    private Gauge createStorageGauge(String title)
     {
         Gauge storage = GaugeBuilder.create()
                 .skinType(Gauge.SkinType.LEVEL)
-                .prefSize(TileWidth,TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .titleColor(Color.WHITE)
                 .animated(true)
                 .gradientBarEnabled(true)
@@ -59,10 +59,10 @@ public class Storage
         return storage;
     }
 
-    private void createMainTile(double TileWidth, double TileHeight) {
-        Gauge storage = createStorageGauge("", TileWidth, TileHeight);
+    private void createMainTile() {
+        Gauge storage = createStorageGauge("");
         MainStorageUsage = TileBuilder.create()
-                .prefSize(TileWidth, TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .skinType(Tile.SkinType.CUSTOM)
                 .title("Total Disk Usage")
                 .titleAlignment(TextAlignment.CENTER)

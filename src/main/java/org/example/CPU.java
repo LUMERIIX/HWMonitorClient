@@ -14,9 +14,9 @@ public class CPU {
 
     public Tile MainCpuTemp;
 
-    public CPU(double TileWidth, double TileHeight)
+    public CPU()
     {
-        createMainTile(TileWidth,TileHeight);
+        createMainTile();
     }
 
     private EventHandler<MouseEvent> MainViewCpuHandler = new EventHandler<MouseEvent>() {
@@ -31,11 +31,11 @@ public class CPU {
         }
     };
 
-    private void createMainTile(double TileWidth, double TileHeight)
+    private void createMainTile()
     {
         MainCpuTemp = TileBuilder.create()
                 .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
-                .prefSize(TileWidth, TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .title("CPU Temp")
                 .titleAlignment(TextAlignment.CENTER)
                 .unit("\u00B0C")

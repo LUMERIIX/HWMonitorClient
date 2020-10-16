@@ -12,16 +12,16 @@ public class RAM
 {
     public Tile MainRamUsage;
 
-    public RAM(double TileWidth, double TileHeight)
+    public RAM()
     {
-        createMainTile(TileWidth,TileHeight);
+        createMainTile();
     }
 
-    private void createMainTile(double TileWidth, double TileHeight)
+    private void createMainTile()
     {
         Gauge ramGauge = GaugeBuilder.create()
                 .skinType(Gauge.SkinType.SIMPLE_SECTION)
-                .prefSize(TileWidth, TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .animated(true)
                 .unit("%")
                 .valueColor(Tile.FOREGROUND)
@@ -40,7 +40,7 @@ public class RAM
         ramGauge.setBarColor(Tile.FOREGROUND);
         ramGauge.setSections(new Section(66, 100, Tile.BLUE));
         MainRamUsage  = TileBuilder.create()
-                .prefSize(TileWidth, TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .skinType(Tile.SkinType.CUSTOM)
                 .title("Ram Usage")
                 .titleAlignment(TextAlignment.CENTER)

@@ -28,9 +28,6 @@ import static javafx.scene.paint.Color.*;
  */
 public class App extends Application {
 
-    private static final    double TILE_WIDTH  = 320;
-    private static final    double TILE_HEIGHT = 300;
-
     @Override
     public void start(Stage stage) {
         var javaVersion = SystemInfo.javaVersion();
@@ -39,14 +36,14 @@ public class App extends Application {
         var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
 
 
-        var gridPane = new GridPane();
+        var gridPane = Dashboard.createDashboardGridPane();
 
-        CPU cpu = new CPU(TILE_WIDTH,TILE_HEIGHT);
-        RAM ram = new RAM(TILE_WIDTH,TILE_HEIGHT);
-        GPU gpu = new GPU(TILE_WIDTH,TILE_HEIGHT);
-        Storage storage = new Storage(TILE_WIDTH,TILE_HEIGHT);
-        Interfaces interfaces = new Interfaces(TILE_WIDTH,TILE_HEIGHT);
-        FanController fans = new FanController(TILE_WIDTH,TILE_HEIGHT);
+        CPU cpu = new CPU();
+        RAM ram = new RAM();
+        GPU gpu = new GPU();
+        Storage storage = new Storage();
+        Interfaces interfaces = new Interfaces();
+        FanController fans = new FanController();
 
 
         gridPane.add(cpu.MainCpuTemp,0,0);
@@ -55,13 +52,6 @@ public class App extends Application {
         gridPane.add(storage.MainStorageUsage,2,1);
         gridPane.add(interfaces.MainInterfaceTile,0,1);
         gridPane.add(fans.MainFanTile,1,1);
-
-        gridPane.setHgap(20);
-        gridPane.setVgap(10);
-
-        Background mainback = new Background(new BackgroundFill(Tile.BACKGROUND, CornerRadii.EMPTY, Insets.EMPTY));
-        gridPane.setBackground(mainback);
-        gridPane.setPrefSize(1024,600);
 
         var scene = new Scene(gridPane, 1024, 600);
 

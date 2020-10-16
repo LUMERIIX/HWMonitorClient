@@ -14,9 +14,9 @@ public class Interfaces
 {
     public Tile MainInterfaceTile;
 
-    public Interfaces(double TileWidth, double TileHeight)
+    public Interfaces()
     {
-        createMainTile(TileWidth,TileHeight);
+        createMainTile();
     }
 
     private EventHandler<MouseEvent> MainViewInterfaceHandler = new EventHandler<MouseEvent>() {
@@ -31,10 +31,10 @@ public class Interfaces
         }
     };
 
-    private void createMainTile(double TileWidth, double TileHeight)    //shows only nr of available network interfaces
+    private void createMainTile()    //shows only nr of available network interfaces
     {
         MainInterfaceTile = TileBuilder.create().skinType(Tile.SkinType.CHARACTER)
-                .prefSize(TileWidth, TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .title("Interfaces")
                 .titleAlignment(TextAlignment.CENTER)
                 .description("-")

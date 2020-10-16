@@ -14,9 +14,9 @@ public class FanController
 {
     public Tile MainFanTile;
 
-    public FanController(double TileWidth, double TileHeight)
+    public FanController()
     {
-        createMainTile(TileWidth,TileHeight);
+        createMainTile();
     }
 
     private EventHandler<MouseEvent> MainViewFanControllerHandler = new EventHandler<MouseEvent>() {
@@ -31,10 +31,10 @@ public class FanController
         }
     };
 
-    private void createMainTile(double TileWidth, double TileHeight)
+    private void createMainTile()
     {
         MainFanTile = TileBuilder.create().skinType(Tile.SkinType.CHARACTER)
-                .prefSize(TileWidth, TileHeight)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .title("Fans")
                 .titleAlignment(TextAlignment.CENTER)
                 .description("-")
