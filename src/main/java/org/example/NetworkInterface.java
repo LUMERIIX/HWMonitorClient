@@ -10,11 +10,11 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Stop;
 
-public class Interfaces
+public class NetworkInterface
 {
     public Tile MainInterfaceTile;
 
-    public Interfaces()
+    public NetworkInterface()
     {
         createMainTile();
     }
