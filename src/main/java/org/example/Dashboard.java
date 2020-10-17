@@ -103,7 +103,7 @@ public class Dashboard
     public static VBox createComponentTable (String [] ColumnNames, String [] CompName, int [] Value)
     {
         List<HBox> hBoxList = new ArrayList<HBox>();
-        VBox tabel = new VBox();
+        VBox table = new VBox();
         String[] val = new String[Value.length];
         Label[] compLabels = new Label[CompName.length];
         Label[] valueLabels = new Label[CompName.length];
@@ -112,7 +112,7 @@ public class Dashboard
         spacer.setPrefSize(5,5);
 
 
-        tabel.setPrefSize(TILE_WIDTH,TILE_HEIGHT);
+        table.setPrefSize(TILE_WIDTH,TILE_HEIGHT);
 
         for(int i = 0; i < Value.length; i++)
         {
@@ -143,9 +143,9 @@ public class Dashboard
         }
 
         for(int i = 0; i < hBoxList.size(); i++)
-            tabel.getChildren().add(hBoxList.get(i));
+            table.getChildren().add(hBoxList.get(i));
 
-        return tabel;
+        return table;
     }
 
     public static VBox createComponentTable (String [] ColumnNames, String [] CompName, int [] Value, String unit)
