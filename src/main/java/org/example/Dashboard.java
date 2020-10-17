@@ -35,36 +35,90 @@ public class Dashboard
 
     }
 
-    static VBox createComponentTable (String [] ColumnNames, String [] CompName, int [] Value)
+    public static HBox createHbox(Pos pos)
+    {
+        HBox hbox = new HBox();
+        hbox.setFillHeight(true);
+        hbox.setAlignment(pos);
+
+        return hbox;
+    }
+
+    public static Label[] createLabelArray (int NrOfLabels, Pos pos, String[] text)
+    {
+        Label[] label = new Label[NrOfLabels];
+
+        for(int i = 0; i < text.length; i++)
+        {
+            label[i] = new Label();
+            //label[i].setPrefSize(TILE_WIDTH/2,10);
+            label[i].setText(text[i]);
+            label[i].setTextFill(Text);
+            label[i].setAlignment(pos);
+        }
+        return label;
+    }
+
+    public static HBox createHBox (Label ColumnOne, Label ColumnTwo)
+    {
+        Region middleSpacer = new Region();
+        Region sideSpacerLeft = new Region();
+        Region sideSpacerRight = new Region();
+        sideSpacerLeft.setPrefSize(20, 20);
+        sideSpacerRight.setPrefSize(20, 20);
+        middleSpacer.setPrefSize(5, 5);
+        HBox.setHgrow(sideSpacerLeft, Priority.NEVER);
+        HBox.setHgrow(sideSpacerRight, Priority.NEVER);
+        HBox.setHgrow(middleSpacer, Priority.ALWAYS);
+        HBox.setHgrow(ColumnOne, Priority.NEVER);
+        HBox.setHgrow(ColumnTwo, Priority.NEVER);
+        HBox hbox = new HBox(5, sideSpacerLeft,ColumnOne, middleSpacer, ColumnTwo,sideSpacerRight);
+        hbox.setAlignment(Pos.CENTER_LEFT);
+        hbox.setFillHeight(true);
+
+        return hbox;
+    }
+
+    public static VBox createComponentTable (String [] ColumnNames, String [] CompName, int [] Value)
     {
         List<HBox> hBoxList = new ArrayList<HBox>();
         VBox tabel = new VBox();
-
-        Label[] columnLabels = new Label[ColumnNames.length];
+        String[] val = new String[Value.length];
         Label[] compLabels = new Label[CompName.length];
-        Label[] valueLabels = new Label[Value.length];
+        Label[] valueLabels = new Label[CompName.length];
 
-        /**if(CompName.length != Value.length)
-            throw new Exception("Size don't mactch");**/
+        Region spacer = new Region();
+        spacer.setPrefSize(5,5);
 
-        for(int i = 0; i < ColumnNames.length; i++)
-        {
-            columnLabels[i] = new Label(ColumnNames[i]);
-        }
-        for(int i = 0; i < CompName.length; i++)
-        {
-            compLabels[i] = new Label(CompName[i]);
-        }
+
+        tabel.setPrefSize(TILE_WIDTH,TILE_HEIGHT);
+
         for(int i = 0; i < Value.length; i++)
         {
-            valueLabels[i] = new Label(String.valueOf(Value[i]));
+            val[i] = String.valueOf(Value[i]);
         }
 
-        hBoxList.add(new HBox(5,columnLabels));
+        Label columnLabelLeft = new Label(ColumnNames[0]);
+        Label columnLabelRight = new Label(ColumnNames[1]);
+
+        columnLabelLeft.setAlignment(Pos.CENTER_LEFT);
+        columnLabelLeft.setTextFill(Text);
+        //columnLabelLeft.setPrefSize(TILE_WIDTH,10);
+        columnLabelRight.setAlignment(Pos.CENTER_RIGHT);
+        columnLabelRight.setTextFill(Text);
+        //columnLabelRight.setPrefSize(TILE_WIDTH,10);
+
+        compLabels = createLabelArray(CompName.length,Pos.CENTER_LEFT,CompName);
+        valueLabels = createLabelArray(Value.length,Pos.CENTER_RIGHT,val);
+
+        //HBox hbox = new HBox();
+        hBoxList.add(createHBox(columnLabelLeft,columnLabelRight));
 
         for(int i = 0; i < CompName.length; i++)
         {
-            hBoxList.add(new HBox(5,compLabels[i],valueLabels[i]));
+            HBox hbox = createHBox(compLabels[i],valueLabels[i]);
+            hBoxList.add(hbox);
+
         }
 
         for(int i = 0; i < hBoxList.size(); i++)
