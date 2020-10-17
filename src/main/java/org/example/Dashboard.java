@@ -2,8 +2,10 @@ package org.example;
 
 import eu.hansolo.tilesfx.Tile;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.lang.String;
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ public class Dashboard
 
     public static final    double TILE_WIDTH  = 320;
     public static final    double TILE_HEIGHT = 300;
+
+    public static final     Color Text = Color.WHITE;
 
     public static GridPane createDashboardGridPane ()
     {
