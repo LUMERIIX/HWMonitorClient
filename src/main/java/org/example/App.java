@@ -20,10 +20,12 @@ public class App extends Application {
     private Timer timer;
     private long test = 0;
 
+    private Hardware hw;
+
     private void sysCycle ()
     {
         test = test + 10;
-        cpu.MainCpuTemp.setValue(test);
+        hw.cpu.MainCpuTemp.setValue(test);
     }
 
     private Timeline processTimeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>()
@@ -38,10 +40,6 @@ public class App extends Application {
         )
     );
 
-    private CPU cpu;
-    private RAM ram;
-    private GPU gpu;
-
     @Override
     public void start(Stage stage)
     {
@@ -52,19 +50,14 @@ public class App extends Application {
 
         var gridPane = Dashboard.createDashboardGridPane();
 
-        cpu = new CPU();
-        ram = new RAM();
-        gpu = new GPU();
-        Storage storage = new Storage();
-        Interfaces interfaces = new Interfaces();
-        FanController fans = new FanController();
+        hw = new Hardware();
 
-        gridPane.add(cpu.MainCpuTemp,0,0);
-        gridPane.add(ram.MainRamUsage,1,0);
-        gridPane.add(gpu.MainGpuTemp,2,0);
-        gridPane.add(storage.MainStorageUsage,2,1);
-        gridPane.add(interfaces.MainInterfaceTile,0,1);
-        gridPane.add(fans.MainFanTile,1,1);
+        gridPane.add(hw.cpu.MainCpuTemp,0,0);
+        gridPane.add(hw.ram.MainRamUsage,1,0);
+        gridPane.add(hw.gpu.MainGpuTemp,2,0);
+        gridPane.add(hw.storage.MainStorageUsage,2,1);
+        gridPane.add(hw.networkInterface.MainInterfaceTile,0,1);
+        gridPane.add(hw.fanController.MainFanTile,1,1);
 
         var scene = new Scene(gridPane, 1024, 600);
 
