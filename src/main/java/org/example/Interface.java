@@ -127,6 +127,16 @@ class OpenHardwareMonitorInterface {
         }
     }
 
+    public DataStruct parseJsonStage(Multimap<String, String> map, String Key)
+    {
+        DataStruct struct = new DataStruct();
+
+        struct.name = Iterables.get(map.get(Key), TextPos);
+        struct.val = ParseUtil.CutSpecialSymbols(Iterables.get(map.get(Key), ValuePos));
+
+        return struct;
+    }
+
     public void parseJson (JsonObject obj, Hardware hw) throws IOException, JSONException {
         assert(obj.isJsonObject());
 
