@@ -150,13 +150,25 @@ class OpenHardwareMonitorInterface {
             //extractIterationSector(Linkermap, 68,84,hw.cpu.Load);/*Integer.parseInt(CPUTop, Integer.parseInt(CPUEnd84), hw.cpu.Load);
             for(int i = Integer.parseInt(CPUTop); i < Integer.parseInt(CPUEnd); i++)
             {
-                if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("CPU"))
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("%"))
                 {
-                    hw.cpu.Load.add(ParseUtil.CutSpecialSymbols(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos)));
+                    hw.cpu.Load.add(parseJsonStage(Linkermap,Integer.toString(i)));
                 }
-                if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Tdie"))
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("°C"))
                 {
-                    hw.cpu.Temp.add(ParseUtil.CutSpecialSymbols(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos)));
+                    hw.cpu.Temperature.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("V"))
+                {
+                    hw.cpu.Voltage.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("MHz"))
+                {
+                    hw.cpu.Clock.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("W"))
+                {
+                    hw.cpu.Power.add(parseJsonStage(Linkermap,Integer.toString(i)));
                 }
             }
             hw.cpu.Cores = hw.cpu.Load.size()/2;

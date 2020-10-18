@@ -19,11 +19,12 @@ public class CPU
 {
     //Data
     public String Name;
-    public ArrayList<Double> Clock;
-    public ArrayList <Double> Load;
+    public ArrayList<DataStruct> Clock;
+    public ArrayList <DataStruct> Load;
     public int Cores;
-    public ArrayList<Double> Temp;
-    public ArrayList <Double> Power;
+    public ArrayList<DataStruct> Temperature;
+    public ArrayList<DataStruct> Power;
+    public ArrayList<DataStruct> Voltage;
 
     //Visual
     public Tile MainCpuTemp;    //Core
@@ -43,7 +44,12 @@ public class CPU
     public CPU()
     {
         Name = new String();
-        Temp = new ArrayList<Double>();
+        Load = new ArrayList<DataStruct>();
+        Clock = new ArrayList<DataStruct>();
+        Temperature = new ArrayList<DataStruct>();
+        Power = new ArrayList<DataStruct>();
+        Voltage = new ArrayList<DataStruct>();
+        Power = new ArrayList<DataStruct>();
         initBackground(CoreTempNames,2);
         createMainTile();
     }
