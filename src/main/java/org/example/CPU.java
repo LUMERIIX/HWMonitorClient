@@ -28,14 +28,14 @@ public class CPU
 
     //Visual
     public Tile MainCpuTemp;    //Core
-    private Tile CoreTempTile;
-    private Tile PowerTile;
-    private Tile LoadTile;
-    private Tile ClockTile;
-    private VBox CputempTable = new VBox();
-    private VBox VoltageTable = new VBox();
-    private VBox LoadTable = new VBox();
-    private VBox ClkTable = new VBox();
+    public Tile CoreTempTile;
+    public Tile PowerTile;
+    public Tile LoadTile;
+    public Tile ClockTile;
+    public VBox CpuTempTable = new VBox();
+    public VBox VoltageTable = new VBox();
+    public VBox LoadTable = new VBox();
+    public VBox ClkTable = new VBox();
     private String CoreTempNames[] = {"Core1","Core2"};
     private VBox CoreTempTable;
     private Stage stage = new Stage();
@@ -133,18 +133,18 @@ public class CPU
         String[] test1 = {"Core1","Core2"};
         int[] test2 = {42,51};
 
-        CputempTable = new VBox();
+        CpuTempTable = new VBox();
         VoltageTable = new VBox();
         LoadTable = new VBox();
         ClkTable = new VBox();
 
-        CputempTable = Dashboard.createComponentTable(test,test1,test2,"°C");
+        CpuTempTable = Dashboard.createComponentTable(test,test1,test2,"°C");
         VoltageTable = Dashboard.createComponentTable(test,test1,test2,"V");
         LoadTable = Dashboard.createComponentTable(test,test1,test2,"%");
         ClkTable = Dashboard.createComponentTable(test,test1,test2,"MHz");
 
         gridPane.add(CoreTempTile,0,0);
-        gridPane.add(CputempTable,0,1);
+        gridPane.add(CpuTempTable,0,1);
         gridPane.add(VoltageTable,1,0);
         gridPane.add(PowerTile,1,1);
         gridPane.add(LoadTile,2,0);
