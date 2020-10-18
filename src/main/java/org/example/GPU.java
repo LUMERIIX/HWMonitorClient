@@ -10,16 +10,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Stop;
 import javafx.scene.text.TextAlignment;
 
+import java.util.ArrayList;
+
 public class GPU
 {
     //Data
     public String Name;
-    public double MemoryClock;
-    public int CoreClock;
-    public double CoreLoad;
-    public double UsedMemory;
-    public double AvailableMemory;
+    public ArrayList<DataStruct> Clock;
+    public ArrayList<DataStruct> Load;
     public double Temperature;
+    public double TotalMemory;
+    public double AvailableMemory;
     public int FanSpeed;
     public double Power;
 
@@ -29,6 +30,8 @@ public class GPU
     public GPU()
     {
         Name = new String();
+        Clock = new ArrayList<DataStruct>();
+        Load = new ArrayList<DataStruct>();
         createMainTile();
     }
 

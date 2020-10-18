@@ -30,6 +30,7 @@ class OpenHardwareMonitorInterface {
     public static final String CPUEnd = "103";
 
     public static final String GPUTop = "113";
+    public static final String GPUEnd = "138";
     public static final String GPUClock ="115";
     public static final String GPUMemoryClock ="116";
     public static final String GPULoad ="122";
@@ -175,13 +176,37 @@ class OpenHardwareMonitorInterface {
 
             //GPU
             hw.gpu.Name =  Iterables.get(Linkermap.get(GPUTop), TextPos); // 0 = Text; 1 = Value;
-            hw.gpu.CoreClock = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(GPUClock), ValuePos));  //MHz
-            hw.gpu.MemoryClock = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(GPUMemoryClock), ValuePos));  //MHz
-            hw.gpu.CoreLoad = ParseUtil.CutSpecialSymbols(Iterables.get(Linkermap.get(GPULoad), ValuePos));
-            hw.gpu.Temperature = ParseUtil.CutSpecialSymbols(Iterables.get(Linkermap.get(GPUTemp), ValuePos));
-            hw.gpu.UsedMemory = ParseUtil.CutCharacters(Iterables.get(Linkermap.get(GPUMemoryUsed), ValuePos)); //MB
-            hw.gpu.AvailableMemory = ParseUtil.CutCharacters(Iterables.get(Linkermap.get(GPUMemoryFree), ValuePos)); //MB
-            hw.gpu.FanSpeed = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(GPUFan), ValuePos));
+            for(int i = Integer.parseInt(GPUTop); i < Integer.parseInt(GPUTop); i++)
+            {
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("MHz"))
+                {
+                    hw.cpu.Clock.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("°C"))
+                {
+                    hw.gpu.Temperature = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("%"))
+                {
+                    hw.gpu.Load.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("RPM"))
+                {
+                    hw.gpu.FanSpeed = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("W"))
+                {
+                    hw.gpu.Power = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Memory Free"))
+                {
+                    hw.gpu.AvailableMemory = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
+                }
+                if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Memory Total"))
+                {
+                    hw.gpu.TotalMemory = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
+                }
+            }
 
             //RAM
             hw.ram.AvailableMemory = (int) (ParseUtil.CutCharacters(Iterables.get(Linkermap.get(RamFreeMemory), ValuePos))*1000); //MB
