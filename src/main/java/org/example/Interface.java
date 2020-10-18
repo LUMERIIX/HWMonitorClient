@@ -210,7 +210,8 @@ class OpenHardwareMonitorInterface {
 
             //RAM
             hw.ram.AvailableMemory = (int) (ParseUtil.CutCharacters(Iterables.get(Linkermap.get(RamFreeMemory), ValuePos))*1000); //MB
-            hw.ram.UsedMemory = (int) (ParseUtil.CutCharacters(Iterables.get(Linkermap.get(RamUsedMemory), ValuePos))*1000); //MB
+            hw.ram.TotalMemory = (int) (ParseUtil.CutCharacters(Iterables.get(Linkermap.get(RamUsedMemory), ValuePos))*1000); //MB
+
 
             //MB
             hw.mb.Name = Iterables.get(Linkermap.get(MB), TextPos);

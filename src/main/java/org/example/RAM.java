@@ -12,9 +12,8 @@ public class RAM
 {
     //Data
     public String Name;
-    public int UsedMemory;
+    public int TotalMemory;
     public int AvailableMemory;
-    public float Temperature;
     public Tile MainRamUsage;
 
     public RAM()
