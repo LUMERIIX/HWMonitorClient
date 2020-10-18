@@ -14,8 +14,19 @@ import javafx.scene.paint.Stop;
 import javafx.scene.text.TextAlignment;
 import org.example.Dashboard;
 
-public class CPU {
+import java.util.ArrayList;
 
+public class CPU
+{
+    //Data
+    public String Name;
+    public ArrayList<Double> Clock;
+    public ArrayList <Double> Load;
+    public int Cores;
+    public ArrayList<Double> Temp;
+    public ArrayList <Double> Power;
+
+    //Visual
     public Tile MainCpuTemp;    //Core
     private Tile CoreTempTile;
     private Tile PowerTile;
@@ -32,6 +43,8 @@ public class CPU {
 
     public CPU()
     {
+        Name = new String();
+        Temp = new ArrayList<Double>();
         initBackground(CoreTempNames,2);
         createMainTile();
     }

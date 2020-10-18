@@ -12,6 +12,10 @@ import javafx.scene.text.TextAlignment;
 
 public class FanController
 {
+    //Data
+    public String Name;
+    public int RPM;
+
     public Tile MainFanTile;
 
     public FanController()

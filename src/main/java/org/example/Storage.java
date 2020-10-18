@@ -18,10 +18,19 @@ import java.lang.String;
 
 public class Storage
 {
+    //Data
+    public String Name;
+    public int UsedMemory;
+    public int AvailableMemory;
+    public float Temperature;
+    public float ReadRate;
+    public float WriteRate;
+
     public Tile MainStorageUsage;
 
     public Storage()
     {
+        Name = new String();
         createMainTile();
     }
 

@@ -10,10 +10,16 @@ import javafx.scene.text.TextAlignment;
 
 public class RAM
 {
+    //Data
+    public String Name;
+    public int UsedMemory;
+    public int AvailableMemory;
+    public float Temperature;
     public Tile MainRamUsage;
 
     public RAM()
     {
+        Name = new String();
         createMainTile();
     }
 

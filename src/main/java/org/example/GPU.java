@@ -12,10 +12,23 @@ import javafx.scene.text.TextAlignment;
 
 public class GPU
 {
+    //Data
+    public String Name;
+    public double MemoryClock;
+    public int CoreClock;
+    public double CoreLoad;
+    public double UsedMemory;
+    public double AvailableMemory;
+    public double Temperature;
+    public int FanSpeed;
+    public double Power;
+
+    //Visual
     public Tile MainGpuTemp;
 
     public GPU()
     {
+        Name = new String();
         createMainTile();
     }
 

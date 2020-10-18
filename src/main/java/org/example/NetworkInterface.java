@@ -12,6 +12,13 @@ import javafx.scene.paint.Stop;
 
 public class NetworkInterface
 {
+    //Data
+    public String Name;
+    public double UploadSpeed;
+    public double DownloadSpeed;
+    public double UploadedData;
+    public double DownloadedData;
+
     public Tile MainInterfaceTile;
 
     public NetworkInterface()

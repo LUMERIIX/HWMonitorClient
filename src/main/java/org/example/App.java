@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 import java.util.Timer;
+import com.google.gson.JsonObject;
+import java.io.IOException;
 
 /**
  * JavaFX App
@@ -21,11 +23,28 @@ public class App extends Application {
     private long test = 0;
 
     private Hardware hw;
+    private Interface interface1;
+    private JsonObject json;
 
     private void sysCycle ()
     {
+        hw.cpu.Temp.clear();
+        //hw.cpu.Load.clear();
         test = test + 10;
-        hw.cpu.MainCpuTemp.setValue(test);
+
+        try
+        {
+            json = interface1.OHWMInterface.readJsonFromUrl("http://192.168.1.22:8085/data.json");
+        }
+        catch(IOException io) {}
+
+        try
+        {
+            interface1.OHWMInterface.parseJson(json,hw);
+        } catch(IOException io) { }
+
+        hw.cpu.MainCpuTemp.setValue(hw.cpu.Temp.get(0));
+
     }
 
     private Timeline processTimeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>()
@@ -51,6 +70,7 @@ public class App extends Application {
         var gridPane = Dashboard.createDashboardGridPane();
 
         hw = new Hardware();
+        interface1 = new Interface();
 
         gridPane.add(hw.cpu.MainCpuTemp,0,0);
         gridPane.add(hw.ram.MainRamUsage,1,0);

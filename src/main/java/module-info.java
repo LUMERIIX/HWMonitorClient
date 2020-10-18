@@ -13,6 +13,10 @@ module org.example {
     // 3rd party
     requires eu.hansolo.medusa;
     requires eu.hansolo.tilesfx;
+    requires org.json;
+    requires com.google.gson;
+    requires com.google.common;
+
 
     exports org.example;
 }
