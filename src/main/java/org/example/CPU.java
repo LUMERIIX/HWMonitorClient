@@ -64,6 +64,37 @@ public class CPU
 
     private GridPane gridPane;
 
+    public void updateBackground ()
+    {
+        gridPane.getChildren().clear();
+        CpuTempTable = Dashboard.createComponentTable(TempTableColumns,DataStruct.extractDataStructName(Temperature),DataStruct.extractDataStructVal(Temperature),"°C");
+        VoltageTable = Dashboard.createComponentTable(VoltageTableColumns,DataStruct.extractDataStructName(Voltage),DataStruct.extractDataStructVal(Voltage),"V");
+        LoadTable = Dashboard.createComponentTable(LoadTableColumns,DataStruct.extractDataStructName(Load),DataStruct.extractDataStructVal(Load),"%");
+        ClkTable = Dashboard.createComponentTable(ClockTableColumns,DataStruct.extractDataStructName(Clock),DataStruct.extractDataStructVal(Clock),"MHz");
+        CoreTempTile.setValue(Temperature.get(0).val);
+        PowerTile.setValue(Power.get(0).val);
+        LoadTile.setValue(Load.get(0).val);
+        ClockTile.setValue(Clock.get(0).val);
+        gridPane.add(CoreTempTile,0,0);
+        gridPane.add(CpuTempTable,0,1);
+        gridPane.add(VoltageTable,1,0);
+        gridPane.add(PowerTile,1,1);
+        gridPane.add(LoadTile,2,0);
+        gridPane.add(LoadTable,2,1);
+        gridPane.add(ClockTile,3,0);
+        gridPane.add(ClkTable,3,1);
+        clearDataStructs();
+    }
+
+    public void clearDataStructs ()
+    {
+        Temperature.clear();
+        Load.clear();
+        Clock.clear();
+        Voltage.clear();
+        Power.clear();
+    }
+
     private void initBackground(String CoreTempNames[],int NrOfCores)
     {
         CoreTempTile = TileBuilder.create()

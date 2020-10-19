@@ -28,8 +28,6 @@ public class App extends Application {
 
     private void sysCycle ()
     {
-        hw.cpu.Temperature.clear();
-
         try
         {
             json = interface1.OHWMInterface.readJsonFromUrl("http://192.168.1.22:8085/data.json");
@@ -42,6 +40,7 @@ public class App extends Application {
         } catch(IOException io) { }
 
         hw.cpu.MainCpuTemp.setValue(hw.cpu.Temperature.get(0).val);
+        hw.cpu.updateBackground();
 
     }
 
