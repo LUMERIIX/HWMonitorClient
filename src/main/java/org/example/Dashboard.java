@@ -148,7 +148,7 @@ public class Dashboard
         return table;
     }
 
-    public static VBox createComponentTable (String [] ColumnNames, String [] CompName, int [] Value, String unit)
+    public static VBox createComponentTable (String [] ColumnNames, String [] CompName, Double [] Value, String unit)
     {
         List<HBox> hBoxList = new ArrayList<HBox>();
         VBox tabel = new VBox();
