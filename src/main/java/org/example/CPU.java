@@ -36,6 +36,12 @@ public class CPU
     public VBox VoltageTable = new VBox();
     public VBox LoadTable = new VBox();
     public VBox ClkTable = new VBox();
+    public String[] TempTableColumns = {"Temperature","Value"};
+    public String[] VoltageTableColumns = {"Voltage","Value"};
+    public String[] LoadTableColumns = {"Load","Value"};
+    public String[] ClockTableColumns = {"Clock","Value"};
+
+
     private String CoreTempNames[] = {"Core1","Core2"};
     private VBox CoreTempTable;
     private Stage stage = new Stage();
