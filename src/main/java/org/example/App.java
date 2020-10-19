@@ -43,7 +43,6 @@ public class App extends Application {
             interface1.OHWMInterface.parseJson(json,hw);
         } catch(IOException io) { }
 
-        hw.cpu.MainCpuTemp.setValue(hw.cpu.Temp.get(0));
         hw.cpu.MainCpuTemp.setValue(hw.cpu.Temperature.get(0).val);
 
     }
