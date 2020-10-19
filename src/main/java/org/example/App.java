@@ -44,6 +44,7 @@ public class App extends Application {
         } catch(IOException io) { }
 
         hw.cpu.MainCpuTemp.setValue(hw.cpu.Temp.get(0));
+        hw.cpu.MainCpuTemp.setValue(hw.cpu.Temperature.get(0).val);
 
     }
 
