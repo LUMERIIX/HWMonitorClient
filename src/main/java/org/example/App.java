@@ -29,8 +29,6 @@ public class App extends Application {
     private void sysCycle ()
     {
         hw.cpu.Temperature.clear();
-        //hw.cpu.Load.clear();
-        test = test + 10;
 
         try
         {
