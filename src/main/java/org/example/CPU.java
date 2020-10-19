@@ -97,7 +97,18 @@ public class CPU
                 .title("Power")
                 .titleAlignment(TextAlignment.CENTER)
                 .description("-")
+                .descriptionAlignment(Pos.CENTER)
+                .build();
+
+        PowerTile = TileBuilder.create()
+                .skinType(Tile.SkinType.NUMBER)
+                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
+                .title("Power")
+                //.text("Whatever text")
+                .value(0)
                 .unit("W")
+                //.description("Test")
+                //.textVisible(true)
                 .build();
 
         LoadTile = TileBuilder.create()
