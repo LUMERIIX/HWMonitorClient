@@ -104,11 +104,8 @@ public class CPU
                 .skinType(Tile.SkinType.NUMBER)
                 .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .title("Power")
-                //.text("Whatever text")
                 .value(0)
                 .unit("W")
-                //.description("Test")
-                //.textVisible(true)
                 .build();
 
         LoadTile = TileBuilder.create()
@@ -159,11 +156,6 @@ public class CPU
         VoltageTable = new VBox();
         LoadTable = new VBox();
         ClkTable = new VBox();
-
-        CpuTempTable = Dashboard.createComponentTable(test,test1,test2,"°C");
-        VoltageTable = Dashboard.createComponentTable(test,test1,test2,"V");
-        LoadTable = Dashboard.createComponentTable(test,test1,test2,"%");
-        ClkTable = Dashboard.createComponentTable(test,test1,test2,"MHz");
 
         gridPane.add(CoreTempTile,0,0);
         gridPane.add(CpuTempTable,0,1);
