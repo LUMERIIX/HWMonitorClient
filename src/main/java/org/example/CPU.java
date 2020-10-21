@@ -56,7 +56,6 @@ public class CPU
         Power = new ArrayList<DataStruct>();
         Voltage = new ArrayList<DataStruct>();
         Power = new ArrayList<DataStruct>();
-        initBackground(CoreTempNames,2);
         createMainTile();
     }
 
@@ -95,7 +94,7 @@ public class CPU
         Power.clear();
     }
 
-    private void initBackground(String CoreTempNames[],int NrOfCores)
+    private void initBackground()
     {
         CoreTempTile = TileBuilder.create()
                 .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
@@ -205,7 +204,10 @@ public class CPU
 
     private EventHandler<MouseEvent> MainViewCpuHandler = new EventHandler<MouseEvent>() {
         @Override
-        public void handle(MouseEvent e) {
+        public void handle(MouseEvent e)
+        {
+            if(gridPane == null)
+                initBackground();
             Node source = (Node)e.getSource();
             System.out.println("CPU Main handle");
             var column = GridPane.getColumnIndex(source);
