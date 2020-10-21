@@ -3,6 +3,7 @@ package org.example;
 import eu.hansolo.tilesfx.Tile;
 import eu.hansolo.tilesfx.TileBuilder;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -59,9 +60,14 @@ public class CPU
         createMainTile();
     }
 
-    private Scene backgroundScene;
+    public Scene backgroundScene;
 
     private GridPane gridPane;
+
+    public void updateForeground ()
+    {
+        Temperature.clear();
+    }
 
     public void updateBackground ()
     {
@@ -196,10 +202,12 @@ public class CPU
         gridPane.add(ClockTile,3,0);
         gridPane.add(ClkTable,3,1);
 
-        var scene = new Scene(gridPane, 1024, 600);
+        CoreTempTile.addEventHandler(MouseEvent.MOUSE_CLICKED,BackgroundHandler);
+
+        backgroundScene = new Scene(gridPane, 1024, 600);
         gridPane.setGridLinesVisible(true);
 
-        stage.setScene(scene);
+        stage.setScene(backgroundScene);
     }
 
     private EventHandler<MouseEvent> MainViewCpuHandler = new EventHandler<MouseEvent>() {
@@ -215,6 +223,19 @@ public class CPU
             System.out.printf("Row: %d",row);
             System.out.printf("Column: %d",column);
             stage.show();
+        }
+    };
+
+    private EventHandler<MouseEvent> BackgroundHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent e) {
+            Node source = (Node)e.getSource();
+            System.out.println("CPU Background handle");
+            var column = GridPane.getColumnIndex(source);
+            var row = GridPane.getRowIndex(source);
+            System.out.printf("Row: %d",row);
+            System.out.printf("Column: %d",column);
+            stage.hide();
         }
     };
 
