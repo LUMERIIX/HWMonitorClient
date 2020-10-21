@@ -16,12 +16,8 @@ import java.io.IOException;
 /**
  * JavaFX App
  */
-public class App extends Application {
-
-    private long lastTimerCall;
-    private Timer timer;
-    private long test = 0;
-
+public class App extends Application
+{
     private Hardware hw;
     private Interface interface1;
     private JsonObject json;
