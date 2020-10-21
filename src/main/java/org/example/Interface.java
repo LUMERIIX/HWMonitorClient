@@ -176,7 +176,7 @@ class OpenHardwareMonitorInterface {
 
             //GPU
             hw.gpu.Name =  Iterables.get(Linkermap.get(GPUTop), TextPos); // 0 = Text; 1 = Value;
-            for(int i = Integer.parseInt(GPUTop); i < Integer.parseInt(GPUTop); i++)
+            for(int i = Integer.parseInt(GPUTop); i < Integer.parseInt(GPUEnd); i++)
             {
                 if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("MHz"))
                 {
