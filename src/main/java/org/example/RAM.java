@@ -12,7 +12,8 @@ public class RAM
 {
     //Data
     public String Name;
-    public int TotalMemory;
+    public int UsedMemory;
+    public Gauge ramGauge;
     public int AvailableMemory;
     public Tile MainRamUsage;
 
