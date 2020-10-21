@@ -36,7 +36,11 @@ public class App extends Application
         } catch(IOException io) { }
 
         hw.cpu.MainCpuTemp.setValue(hw.cpu.Temperature.get(0).val);
-        hw.cpu.updateBackground();
+        hw.ram.ramGauge.setValue(100.0/(hw.ram.AvailableMemory+hw.ram.UsedMemory)*hw.ram.UsedMemory);
+        hw.gpu.MainGpuTemp.setValue(hw.gpu.Temperature);
+        if(hw.cpu.backgroundScene != null)
+            hw.cpu.updateBackground();
+        hw.cpu.updateForeground();
 
     }
 
