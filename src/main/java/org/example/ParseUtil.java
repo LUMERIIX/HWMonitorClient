@@ -11,7 +11,7 @@ public class ParseUtil {
 
     public static double CutCharacters(String str)
     {
-        String temp = str.replaceAll("[a-zA-Z\\s+]", "");
+        String temp = str.replaceAll("[a-zA-Z\\s°+]", "");
         temp.trim();
         return Double.parseDouble(temp);
     }
