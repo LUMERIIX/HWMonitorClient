@@ -31,13 +31,6 @@ class OpenHardwareMonitorInterface {
 
     public static final String GPUTop = "113";
     public static final String GPUEnd = "138";
-    public static final String GPUClock ="115";
-    public static final String GPUMemoryClock ="116";
-    public static final String GPULoad ="122";
-    public static final String GPUTemp ="119";
-    public static final String GPUMemoryUsed ="134";
-    public static final String GPUMemoryFree ="133";
-    public static final String GPUFan ="127";
 
     public static final String RamUsedMemory = "109";
     public static final String RamFreeMemory = "110";
