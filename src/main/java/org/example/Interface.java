@@ -34,6 +34,9 @@ class OpenHardwareMonitorInterface {
 
     public static final String RamUsedMemory = "109";
     public static final String RamFreeMemory = "110";
+    public static final String[] DisksTop = {"139","151","163"};
+    public static final String[] DiskLength = {"12","12","20"};
+    public static final String[] Interfaces = {"208"};
 
     public OpenHardwareMonitorInterface()
     {
@@ -205,7 +208,40 @@ class OpenHardwareMonitorInterface {
             hw.ram.AvailableMemory = (int) (ParseUtil.CutCharacters(Iterables.get(Linkermap.get(RamFreeMemory), ValuePos))*1000); //MB
             hw.ram.UsedMemory = (int) (ParseUtil.CutCharacters(Iterables.get(Linkermap.get(RamUsedMemory), ValuePos))*1000); //MB
 
+            //Storage
+            hw.storage.clearDataStructs();
+            for(int k = 0; k < DisksTop.length;k++)
+            {
+                hw.storage.Name.add(Iterables.get(Linkermap.get(DisksTop[k]), TextPos)); // 0 = Text; 1 = Value;
+                for (int i = Integer.parseInt(DisksTop[k]); i < (Integer.parseInt(DisksTop[k])+Integer.parseInt(DiskLength[k])); i++)
+                {
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Temperature"))
+                    {
+                        try
+                        {
+                            hw.storage.Temperature.add(ParseUtil.CutSpecialSymbols(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos)));
+                        }
+                        catch(NumberFormatException ex)
+                        {
 
+                        }
+                    }
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Read Rate"))
+                    {
+                        hw.storage.ThroughputRate.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                        hw.storage.ThroughputRate.get(hw.storage.ThroughputRate.size()-1).name = "RD " + hw.storage.Name.get(k);
+                    }
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Write Rate"))
+                    {
+                        hw.storage.ThroughputRate.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                        hw.storage.ThroughputRate.get(hw.storage.ThroughputRate.size()-1).name = "WR " + hw.storage.Name.get(k);
+                    }
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Used Space"))
+                    {
+                        hw.storage.UsedMemory.add(ParseUtil.CutSpecialSymbols(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos)));
+                    }
+                }
+            }
 
             //MB
             hw.mb.Name = Iterables.get(Linkermap.get(MB), TextPos);
