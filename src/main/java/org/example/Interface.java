@@ -173,11 +173,11 @@ class OpenHardwareMonitorInterface {
             {
                 if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("MHz"))
                 {
-                    hw.cpu.Clock.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                    hw.gpu.Clock.add(parseJsonStage(Linkermap,Integer.toString(i)));
                 }
                 if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("°C"))
                 {
-                    hw.gpu.Temperature = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
+                    hw.gpu.Temperature = ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
                 }
                 if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("%"))
                 {
@@ -189,7 +189,7 @@ class OpenHardwareMonitorInterface {
                 }
                 if(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos).contains("W"))
                 {
-                    hw.gpu.Power = (int) ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
+                    hw.gpu.Power = ParseUtil.CutCharacters(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos));
                 }
                 if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Memory Free"))
                 {
