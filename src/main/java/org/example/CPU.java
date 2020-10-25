@@ -184,10 +184,6 @@ public class CPU
 
         gridPane = Dashboard.createDashboardGridPane();
 
-        String[] test = {"Temp","Value"};
-        String[] test1 = {"Core1","Core2"};
-        int[] test2 = {42,51};
-
         CpuTempTable = new VBox();
         VoltageTable = new VBox();
         LoadTable = new VBox();
