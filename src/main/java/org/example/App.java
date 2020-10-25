@@ -41,7 +41,10 @@ public class App extends Application
         if(hw.cpu.backgroundScene != null)
             hw.cpu.updateBackground();
         hw.cpu.updateForeground();
+        if(hw.gpu.backgroundScene != null)
+            hw.gpu.updateBackground();
 
+        hw.gpu.clearDataStructs();
     }
 
     private Timeline processTimeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>()
