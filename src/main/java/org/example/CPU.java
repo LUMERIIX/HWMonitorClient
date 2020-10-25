@@ -72,6 +72,10 @@ public class CPU
     public void updateBackground ()
     {
         gridPane.getChildren().clear();
+        CpuTempTable.getChildren().clear();
+        VoltageTable.getChildren().clear();
+        LoadTable.getChildren().clear();
+        ClkTable.getChildren().clear();
         CpuTempTable = Dashboard.createComponentTable(TempTableColumns,DataStruct.extractDataStructName(Temperature),DataStruct.extractDataStructVal(Temperature),"°C");
         VoltageTable = Dashboard.createComponentTable(VoltageTableColumns,DataStruct.extractDataStructName(Voltage),DataStruct.extractDataStructVal(Voltage),"V");
         LoadTable = Dashboard.createComponentTable(LoadTableColumns,DataStruct.extractDataStructName(Load),DataStruct.extractDataStructVal(Load),"%");
