@@ -44,6 +44,7 @@ public class App extends Application
         if(hw.gpu.backgroundScene != null)
             hw.gpu.updateBackground();
 
+        hw.cpu.clearDataStructs();
         hw.gpu.clearDataStructs();
     }
 
