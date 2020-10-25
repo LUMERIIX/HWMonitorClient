@@ -46,6 +46,8 @@ public class App extends Application
 
         hw.cpu.clearDataStructs();
         hw.gpu.clearDataStructs();
+
+        Runtime.getRuntime().gc();
     }
 
     private Timeline processTimeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>()
