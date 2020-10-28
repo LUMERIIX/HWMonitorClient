@@ -38,11 +38,16 @@ public class App extends Application
         hw.cpu.MainCpuTemp.setValue(hw.cpu.Temperature.get(0).val);
         hw.ram.ramGauge.setValue(100.0/(hw.ram.AvailableMemory+hw.ram.UsedMemory)*hw.ram.UsedMemory);
         hw.gpu.MainGpuTemp.setValue(hw.gpu.Temperature);
+       if(hw.storage.TotalDiskMemoryUsed != null)
+            hw.storage.MainStorageUsageGauge.setValue(hw.storage.TotalDiskMemoryUsed/*100/(hw.storage.TotalDiskMemoryAvailable+hw.storage.TotalDiskMemoryUsed)*hw.storage.TotalDiskMemoryUsed*/);
         if(hw.cpu.backgroundScene != null)
             hw.cpu.updateBackground();
         hw.cpu.updateForeground();
         if(hw.gpu.backgroundScene != null)
             hw.gpu.updateBackground();
+        hw.storage.updateForeground();
+        if(hw.storage.backgroundScene != null)
+            hw.storage.updateBackground();
 
         hw.cpu.clearDataStructs();
         hw.gpu.clearDataStructs();
