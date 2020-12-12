@@ -19,11 +19,12 @@ import java.util.ArrayList;
 public class NetworkInterface
 {
     //Data
-    public static ArrayList<String> Name;
-    public static ArrayList<Double> UploadSpeed;
-    public static ArrayList<Double> DownloadSpeed;
-    public static ArrayList<Double> UploadedData;
-    public static ArrayList<Double> DownloadedData;
+    public ArrayList<DataStruct> Name;
+    public ArrayList<DataStruct> UploadSpeed;
+    public ArrayList<DataStruct> DownloadSpeed;
+    public ArrayList<DataStruct> UploadedData;
+    public ArrayList<DataStruct> DownloadedData;
+    public ArrayList<DataStruct> NetworkUtilization;
     private Integer numOfInterfaces = 0;
 
     public Tile MainInterfaceTile;
@@ -36,11 +37,14 @@ public class NetworkInterface
 
     public NetworkInterface()
     {
-        Name = new ArrayList<String>();
-        UploadSpeed = new ArrayList<Double>();
-        DownloadSpeed = new ArrayList<Double>();
-        UploadedData = new ArrayList<Double>();
-        DownloadedData = new ArrayList<Double>();
+        Name = new ArrayList<DataStruct>();
+        UploadSpeed = new ArrayList<DataStruct>();
+        DownloadSpeed = new ArrayList<DataStruct>();
+        UploadedData = new ArrayList<DataStruct>();
+        DownloadedData = new ArrayList<DataStruct>();
+        NetworkUtilization = new ArrayList<DataStruct>();
+        InterfaceTable = new ArrayList<VBox>();
+        InterfaceUsage = new ArrayList<Tile>();
         createMainTile();
     }
 
