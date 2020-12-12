@@ -157,7 +157,7 @@ public class NetworkInterface
                 .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
                 .title("Interfaces")
                 .titleAlignment(TextAlignment.CENTER)
-                .description("-")
+                .description(numOfInterfaces.toString())
                 .build();
 
         MainInterfaceTile.addEventHandler(MouseEvent.MOUSE_CLICKED,MainViewInterfaceHandler);
