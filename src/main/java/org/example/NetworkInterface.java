@@ -63,7 +63,55 @@ public class NetworkInterface
         //}
     }
 
-    private void clearDataStructs ()
+    private VBox createNetworkInterfaceTable (int interfaceIndex)
+    {
+        List<HBox> hBoxList = new ArrayList<HBox>();
+        VBox table = new VBox();
+
+        String[] VarNames = {DownloadedData.get(interfaceIndex).name.toString(),UploadedData.get(interfaceIndex).name.toString(),DownloadSpeed.get(interfaceIndex).name.toString(),UploadSpeed.get(interfaceIndex).name.toString()};
+        String[] Values = {DownloadedData.get(interfaceIndex).val.toString(),UploadedData.get(interfaceIndex).val.toString(),DownloadSpeed.get(interfaceIndex).val.toString(),UploadSpeed.get(interfaceIndex).val.toString()};
+        String[] Units = {DownloadedData.get(interfaceIndex).unit,UploadedData.get(interfaceIndex).unit,DownloadSpeed.get(interfaceIndex).unit,UploadSpeed.get(interfaceIndex).unit};
+
+
+        Label[] valueNameLabels = new Label[VarNames.length];
+        Label[] valueLabels = new Label[VarNames.length];
+        Label[] unitLabels = new Label[VarNames.length+1];
+
+        Region spacer = new Region();
+        spacer.setPrefSize(5,5);
+
+
+        table.setPrefSize(Dashboard.TILE_WIDTH,Dashboard.TILE_HEIGHT);
+
+        Label columnLabelLeft = new Label(TemperatureColumns[0]);
+        Label columnLabelRight = new Label(TemperatureColumns[1]);
+
+
+        columnLabelLeft.setAlignment(Pos.CENTER_LEFT);
+        columnLabelLeft.setTextFill(Dashboard.Text);
+        columnLabelRight.setAlignment(Pos.CENTER_RIGHT);
+        columnLabelRight.setTextFill(Dashboard.Text);
+
+
+        valueNameLabels = Dashboard.createLabelArray(VarNames.length,Pos.CENTER_LEFT,VarNames);
+        valueLabels = Dashboard.createLabelArray(Values.length,Pos.CENTER_RIGHT,Values);
+        unitLabels = Dashboard.createLabelArray(Units.length,Pos.CENTER_RIGHT,Units);
+
+        hBoxList.add(Dashboard.createHBox(columnLabelLeft,columnLabelRight));
+
+        for(int i = 0; i < VarNames.length; i++)
+        {
+            HBox hbox = Dashboard.createHBox(valueNameLabels[i],valueLabels[i],unitLabels[i]);
+            hBoxList.add(hbox);
+        }
+
+        for(int i = 0; i < hBoxList.size(); i++)
+            table.getChildren().add(hBoxList.get(i));
+
+        return table;
+    }
+
+    public void clearDataStructs ()
     {
         Name.clear();
         UploadSpeed.clear();
