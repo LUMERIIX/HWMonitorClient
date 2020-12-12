@@ -243,6 +243,43 @@ class OpenHardwareMonitorInterface {
                 }
             }
 
+            //Networks
+            hw.networkInterface.clearDataStructs();
+            for(int k = 0; k < InterfacesTop.length;k++)
+            {
+                hw.networkInterface.Name.clear();
+                hw.networkInterface.Name.add(parseJsonStage(Linkermap,InterfacesTop[k].toString()));
+                for (int i = Integer.parseInt(InterfacesTop[k]); i <= (Integer.parseInt(InterfacesTop[k])+8); i++)
+                {
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Network Utilization"))
+                    {
+                        try
+                        {
+                            hw.networkInterface.NetworkUtilization.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                        }
+                        catch(NumberFormatException ex)
+                        {
+                        }
+                    }
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Upload Speed"))
+                    {
+                        hw.networkInterface.UploadSpeed.add(parseJsonStage(Linkermap,Integer.toString(i)));
+
+                    }
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Download Speed"))
+                    {
+                        hw.networkInterface.DownloadSpeed.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                    }
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Data Uploaded"))
+                    {
+                        hw.networkInterface.UploadedData.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                    }
+                    if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Data Downloaded"))
+                    {
+                        hw.networkInterface.DownloadedData.add(parseJsonStage(Linkermap,Integer.toString(i)));
+                    }
+                }
+            }
             //MB
             hw.mb.Name = Iterables.get(Linkermap.get(MB), TextPos);
         }
