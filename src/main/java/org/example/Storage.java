@@ -74,7 +74,7 @@ public class Storage
         TemperatureTable = new VBox();
         ThroughputTable = new VBox();
 
-        gridPane.add(TemperatureTable,1,0);
+        gridPane.add(TemperatureTable,0,1);
         gridPane.add(ThroughputTable,1,1);
 
         try
