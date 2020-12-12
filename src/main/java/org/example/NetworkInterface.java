@@ -46,7 +46,9 @@ public class NetworkInterface
 
     public void updateForeground ()
     {
-
+        numOfInterfaces = Name.size();
+        if(numOfInterfaces != null)
+            MainInterfaceTile.setDescription(numOfInterfaces.toString());
     }
 
     public void updateBackground ()
