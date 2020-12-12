@@ -16,6 +16,13 @@ public class ParseUtil {
         return Double.parseDouble(temp);
     }
 
+    public static String GetUnit(String str)
+    {
+        String temp = str.replaceAll("[0-9\\s.]", "");
+        temp.trim();
+        return temp;
+    }
+
     public ParseUtil()
     {
 
