@@ -126,54 +126,17 @@ public class NetworkInterface
 
     private void initBackground()
     {
-        /*CoreTempTile = TileBuilder.create()
-                .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
-                .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
-                .title("CPU Temp")
-                .titleAlignment(TextAlignment.CENTER)
-                .unit("\u00B0C")
-                .animated(true)
-                .textVisible(false)
-                .averagingPeriod(25)
-                .autoReferenceValue(true)
-                .barColor(Tile.YELLOW_ORANGE)
-                .barBackgroundColor(Color.rgb(255, 255, 255, 0.1))
-                .sections(new eu.hansolo.tilesfx.Section(0, 33, Tile.LIGHT_GREEN),
-                        new eu.hansolo.tilesfx.Section(33, 67, Tile.YELLOW),
-                        new eu.hansolo.tilesfx.Section(67, 100, Tile.LIGHT_RED))
-                .sectionsVisible(true)
-                .highlightSections(true)
-                .strokeWithGradient(true)
-                .gradientStops(new Stop(0.0, Tile.LIGHT_GREEN),
-                        new Stop(0.33, Tile.LIGHT_GREEN),
-                        new Stop(0.33,Tile.YELLOW),
-                        new Stop(0.67, Tile.YELLOW),
-                        new Stop(0.67, Tile.LIGHT_RED),
-                        new Stop(1.0, Tile.LIGHT_RED))
-                .build();
 
         gridPane = Dashboard.createDashboardGridPane();
 
-        CpuTempTable = new VBox();
-        VoltageTable = new VBox();
-        LoadTable = new VBox();
-        ClkTable = new VBox();
-
-        gridPane.add(CoreTempTile,0,0);
-        gridPane.add(CpuTempTable,0,1);
-        gridPane.add(VoltageTable,1,0);
-        gridPane.add(PowerTile,1,1);
-        gridPane.add(LoadTile,2,0);
-        gridPane.add(LoadTable,2,1);
-        gridPane.add(ClockTile,3,0);
-        gridPane.add(ClkTable,3,1);
 
         //CoreTempTile.addEventHandler(MouseEvent.MOUSE_CLICKED,BackgroundHandler);
+        clearDataStructs();
 
         backgroundScene = new Scene(gridPane, 1024, 600);
         gridPane.setGridLinesVisible(true);
 
-        stage.setScene(backgroundScene);*/
+        stage.setScene(backgroundScene);
     }
 
     private EventHandler<MouseEvent> MainViewInterfaceHandler = new EventHandler<MouseEvent>() {
