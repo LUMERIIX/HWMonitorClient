@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class DataStruct {
     public String name;
     public Double val;
+    public String unit;
 
     static public Double[] extractDataStructVal(ArrayList<DataStruct> struct)
     {
@@ -23,9 +24,9 @@ public class DataStruct {
                 throw new ArrayIndexOutOfBoundsException();
             }
         } catch (NullPointerException e) {
-            System.out.println("Das ist kein Array");
+            System.out.println("DataStruct error: This not an array");
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Das Array ist leer.");
+            System.out.println("DataStruct error: The array is empty");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,9 +46,31 @@ public class DataStruct {
                 throw new ArrayIndexOutOfBoundsException();
             }
         } catch (NullPointerException e) {
-            System.out.println("Das ist kein Array");
+            System.out.println("DataStruct error: This not an array");
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Das Array ist leer.");
+            System.out.println("DataStruct error: The array is empty");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new String[0];
+    }
+
+    static public String[] extractDataStructUnit(ArrayList<DataStruct> struct)
+    {
+        try {
+            if (struct.size() > 0) {
+                String[] string = new String[struct.size()];
+                for (int i = 0; i < struct.size(); i++) {
+                    string[i] = struct.get(i).unit.toString();
+                }
+                return string;
+            } else {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+        } catch (NullPointerException e) {
+            System.out.println("DataStruct error: This not an array");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("DataStruct error: The array is empty");
         } catch (Exception e) {
             e.printStackTrace();
         }
