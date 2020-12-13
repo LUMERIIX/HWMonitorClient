@@ -57,14 +57,19 @@ public class NetworkInterface
 
     public void updateBackground ()
     {
-        /**gridPane.getChildren().clear();
-        for(int i = 0; i < Name.size();i++)
+        gridPane.getChildren().clear();
+        if(numOfInterfaces > 0)
         {
-            TotalDiskMemoryUsed += UsedMemory.get(i);
-            //TotalDiskMemoryAvailable += AvailableMemory.get(i);
-            StorageCapacityGauges.get(i).setValue(/*100/(AvailableMemory.get(i)+UsedMemory.get(i))*UsedMemory.get(i)*//*UsedMemory.get(i));*/
-            //gridPane.add(StorageCapacityTiles.get(i),i,0);   //Add all Capacity gauges in one line
-        //}
+            InterfaceTable.clear();
+            for (int i = 0; i < numOfInterfaces; i++)
+            {
+                InterfaceUsage.get(i).setValue(NetworkUtilization.get(i).val);
+                InterfaceTable.add(createNetworkInterfaceTable(i));
+
+                gridPane.add(InterfaceUsage.get(i), i, 0);
+                gridPane.add(InterfaceTable.get(i), i, 1);
+            }
+        }
     }
 
     private VBox createNetworkInterfaceTable (int interfaceIndex)
