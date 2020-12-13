@@ -117,7 +117,6 @@ public class NetworkInterface
 
     public void clearDataStructs ()
     {
-        Name.clear();
         UploadSpeed.clear();
         DownloadSpeed.clear();
         UploadedData.clear();
