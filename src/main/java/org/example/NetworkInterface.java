@@ -6,8 +6,11 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.paint.Color;
@@ -15,6 +18,7 @@ import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NetworkInterface
 {
@@ -28,7 +32,10 @@ public class NetworkInterface
     private Integer numOfInterfaces = 0;
 
     public Tile MainInterfaceTile;
+    public ArrayList<VBox> InterfaceTable;
+    public ArrayList<Tile> InterfaceUsage;
     private Stage stage = new Stage();
+    private String[] TemperatureColumns = {"Value",""};
 
     public Scene backgroundScene;
 
