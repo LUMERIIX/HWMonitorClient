@@ -229,10 +229,7 @@ class OpenHardwareMonitorInterface {
                         {
                             hw.storage.Temperature.add(ParseUtil.CutSpecialSymbols(Iterables.get(Linkermap.get(Integer.toString(i)), ValuePos)));
                         }
-                        catch(NumberFormatException ex)
-                        {
-
-                        }
+                        catch(NumberFormatException ex) {}
                     }
                     if(Iterables.get(Linkermap.get(Integer.toString(i)), TextPos).contains("Read Rate"))
                     {
@@ -288,6 +285,7 @@ class OpenHardwareMonitorInterface {
                     }
                 }
             }
+
             //MB
             hw.mb.Name = Iterables.get(Linkermap.get(MB), TextPos);
         }
