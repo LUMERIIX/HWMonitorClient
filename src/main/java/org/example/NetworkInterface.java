@@ -121,6 +121,7 @@ public class NetworkInterface
         DownloadSpeed.clear();
         UploadedData.clear();
         DownloadedData.clear();
+        NetworkUtilization.clear();
     }
 
     private void initBackground()
