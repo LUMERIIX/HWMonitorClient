@@ -48,9 +48,13 @@ public class App extends Application
         hw.storage.updateForeground();
         if(hw.storage.backgroundScene != null)
             hw.storage.updateBackground();
+        hw.networkInterface.updateForeground();
+        if(hw.networkInterface.backgroundScene != null)
+            hw.networkInterface.updateBackground();
 
         hw.cpu.clearDataStructs();
         hw.gpu.clearDataStructs();
+        hw.networkInterface.clearDataStructs();
 
         Runtime.getRuntime().gc();
     }
