@@ -129,7 +129,15 @@ class OpenHardwareMonitorInterface {
         DataStruct struct = new DataStruct();
 
         struct.name = Iterables.get(map.get(Key), TextPos);
-        struct.val = ParseUtil.CutSpecialSymbols(Iterables.get(map.get(Key), ValuePos));
+        try
+        {
+            struct.val = ParseUtil.CutSpecialSymbols(Iterables.get(map.get(Key), ValuePos));
+        }
+        catch(NumberFormatException ex)
+        {
+
+        }
+        struct.unit = ParseUtil.GetUnit(Iterables.get(map.get(Key), ValuePos));
 
         return struct;
     }
