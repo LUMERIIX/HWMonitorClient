@@ -36,7 +36,7 @@ class OpenHardwareMonitorInterface {
     public static final String RamFreeMemory = "110";
     public static final String[] DisksTop = {"139","151","163"};
     public static final String[] DiskLength = {"12","12","20"};
-    public static final String[] Interfaces = {"208"};
+    public static final String[] InterfacesTop = {"208"};
 
     public OpenHardwareMonitorInterface()
     {
