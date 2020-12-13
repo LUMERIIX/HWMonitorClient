@@ -41,7 +41,6 @@ public class NetworkInterface
 
     private GridPane gridPane;
 
-
     public NetworkInterface()
     {
         Name = new ArrayList<DataStruct>();
@@ -138,7 +137,6 @@ public class NetworkInterface
 
     private void initBackground()
     {
-
         gridPane = Dashboard.createDashboardGridPane();
         for(int i = 0; i < numOfInterfaces; i++)
         {
@@ -175,8 +173,8 @@ public class NetworkInterface
 
             gridPane.add(InterfaceUsage.get(i),i,0);
             gridPane.add(InterfaceTable.get(i),i,1);
+        }
 
-        //CoreTempTile.addEventHandler(MouseEvent.MOUSE_CLICKED,BackgroundHandler);
         clearDataStructs();
 
         backgroundScene = new Scene(gridPane, 1024, 600);
