@@ -128,7 +128,41 @@ public class NetworkInterface
     {
 
         gridPane = Dashboard.createDashboardGridPane();
+        for(int i = 0; i < numOfInterfaces; i++)
+        {
 
+            InterfaceUsage.add(TileBuilder.create()
+                    .skinType(Tile.SkinType.GAUGE_SPARK_LINE)
+                    .prefSize(Dashboard.TILE_WIDTH, Dashboard.TILE_WIDTH)
+                    .title(Name.get(i).name)
+                    .titleAlignment(TextAlignment.CENTER)
+                    .unit("%")
+                    .animated(true)
+                    .textVisible(false)
+                    .averagingPeriod(25)
+                    .autoReferenceValue(true)
+                    .barColor(Tile.YELLOW_ORANGE)
+                    .barBackgroundColor(Color.rgb(255, 255, 255, 0.1))
+                    .sections(new eu.hansolo.tilesfx.Section(0, 33, Tile.LIGHT_GREEN),
+                            new eu.hansolo.tilesfx.Section(33, 67, Tile.YELLOW),
+                            new eu.hansolo.tilesfx.Section(67, 100, Tile.LIGHT_RED))
+                    .sectionsVisible(true)
+                    .highlightSections(true)
+                    .strokeWithGradient(true)
+                    .gradientStops(new Stop(0.0, Tile.LIGHT_GREEN),
+                            new Stop(0.33, Tile.LIGHT_GREEN),
+                            new Stop(0.33,Tile.YELLOW),
+                            new Stop(0.67, Tile.YELLOW),
+                            new Stop(0.67, Tile.LIGHT_RED),
+                            new Stop(1.0, Tile.LIGHT_RED))
+                    .build());
+
+            InterfaceUsage.get(i).addEventHandler(MouseEvent.MOUSE_CLICKED,BackgroundHandler);
+
+            InterfaceTable.add(new VBox());
+
+            gridPane.add(InterfaceUsage.get(i),i,0);
+            gridPane.add(InterfaceTable.get(i),i,1);
 
         //CoreTempTile.addEventHandler(MouseEvent.MOUSE_CLICKED,BackgroundHandler);
         clearDataStructs();
